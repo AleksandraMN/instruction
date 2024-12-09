@@ -15,22 +15,19 @@ export const App = () => {
 	const getActiveIndex = (index) => {
 		setActiveIndex(index);
 	};
-	const getActiveContent = () => {
-		const itemActive = steps.filter((item, index) => index === activeIndex);
-		const d = itemActive.map(({ content }) => <p key={content}>{content}</p>);
-		return d;
-	};
 
 	const handleClickNext = () => {
 		setActiveIndex((prevActiveIndex) => prevActiveIndex + 1);
 	};
 
 	const handleClickBack = () => {
-		setActiveIndex((prevActiveIndex) => prevActiveIndex - 1);
+		if (activeIndex > 0) {
+			setActiveIndex((prevActiveIndex) => prevActiveIndex - 1);
+		}
 	};
 
 	const handleClickStartAgain = () => {
-		setActiveIndex((prevActiveIndex) => (prevActiveIndex = 0));
+		setActiveIndex(0);
 	};
 
 	return (
@@ -38,7 +35,7 @@ export const App = () => {
 			<div className={styles.card}>
 				<h1>Инструкция по готовке пельменей</h1>
 				<div className={styles.steps}>
-					<div className={styles['steps-content']}>{getActiveContent()}</div>
+					<div className={styles['steps-content']}>{steps[activeIndex].content}</div>
 					<ul className={styles['steps-list']}>
 						{steps.map(({ id, title }, index) => (
 							<li
