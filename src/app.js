@@ -7,7 +7,7 @@ export const App = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	let start = activeIndex === 0 ? true : false;
-	let end = activeIndex === 6 ? true : false;
+	let end = activeIndex === steps.length - 1 ? true : false;
 	const classesActive = styles['steps-item'] + ' ' + styles.done + ' ' + styles.active;
 	const classesCurrent = styles['steps-item'] + ' ' + styles.done;
 	const classes = styles['steps-item'];
